@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)"
+options: "79aef02e90101e4374d32f07dca42413333317180c201b33b648567cfb3a4aac"
+build_start_time: [1673608501, 788481950]
+build_end_time: [1673608503, 51401138]
+inputs:
+  "/Users/harshbhagat/Desktop/DEV/FlutterApps/quizzler/macos/Flutter/GeneratedPluginRegistrant.swift": [1673608483, 896969318]
+  "/Users/harshbhagat/Desktop/DEV/FlutterApps/quizzler/macos/Runner/AppDelegate.swift": [1669220596, 0]
+  "/Users/harshbhagat/Desktop/DEV/FlutterApps/quizzler/macos/Runner/MainFlutterWindow.swift": [1669220596, 0]
