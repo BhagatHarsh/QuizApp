@@ -5,6 +5,7 @@
 
 // @dart = 2.2
 
+import 'dart:io'; // flutter_ignore: dart_io_import.
 import 'package:shared_preferences_android/shared_preferences_android.dart';
 import 'package:shared_preferences_foundation/shared_preferences_foundation.dart';
 import 'package:shared_preferences_linux/shared_preferences_linux.dart';

@@ -8,16 +8,23 @@ QuizBrain quizBrain = QuizBrain();
 
 void initiateQuestion() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  highScore = prefs.getInt('highScore') ?? 0;
+  highScore = await prefs.getInt('highScore') ?? 0;
   await quizBrain.nextQuestion();
 }
 
-void updateHighscore() async {
+void updateHighscore(int green, int red) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  if (highScore < quizBrain.getQuestionNumber()) {
-    highScore = quizBrain.getQuestionNumber();
+  int currentScore = green - red;
+  if (highScore < currentScore) {
+    highScore = currentScore;
     prefs.setInt('highScore', highScore);
   }
+}
+
+void printHighscore() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  highScore = prefs.getInt('highScore');
+  print(highScore);
 }
 
 void main() => runApp(Quizzler());
@@ -83,6 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: _hoverChange,
               ),
             ),
+            SizedBox(height: 60),
             TextButton(
               child: Text("Start Quiz",
                   style: TextStyle(
@@ -164,7 +172,7 @@ class _QuizPageState extends State<QuizPage> {
           ),
         );
       }
-      // refershHighScore(_greenTicks, _redTicks);
+      updateHighscore(_greenTicks, _redTicks);
       initiateQuestion();
     });
   }
@@ -206,6 +214,7 @@ class _QuizPageState extends State<QuizPage> {
                   ),
                   onPressed: () {
                     //The user picked true.
+                    updateHighscore(_greenTicks, _redTicks);
                     Navigator.pop(context);
                     _greenTicks = 0;
                     _redTicks = 0;
