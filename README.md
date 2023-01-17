@@ -1,19 +1,6 @@
-![App Brewery Banner](https://github.com/londonappbrewery/Images/blob/master/AppBreweryBanner.png)
+# This app is a simple True and False trivia question's app.
+There is a lot of features left to be implemented
+- highscore
+- login
 
-
-# Quizzler Challenge - Starting Files
-
-- Clone this repository to your local system.
-
-- Read the docs for the package we're using:
-
-[rFluttter Alert](https://pub.dartlang.org/packages/rflutter_alert)
-
-- Follow the step by step challenges.
-
-
-
-
->This is a companion project to The App Brewery's Complete Flutter Development Bootcamp, check out the full course at [www.appbrewery.co](https://www.appbrewery.co/)
-
-![End Banner](https://github.com/londonappbrewery/Images/blob/master/readme-end-banner.png)
+### It does uses an API form [https://github.com/jgoralcz/trivia] to get the question's needed.
