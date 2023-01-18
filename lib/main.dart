@@ -55,8 +55,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    printHighscore();
     initiateQuestion();
     super.initState();
+  }
+
+  void getHighscore() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    highScore = await prefs.getInt('highScore') ?? 0;
   }
 
   @override
@@ -64,27 +70,22 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: _backGroundColor,
       appBar: AppBar(
-        title: Text("Quiz App",
-            style: TextStyle(
-              fontSize: 20,
-              color: _backGroundColor,
-            )),
-        backgroundColor: Colors.lightBlueAccent,
+        title: Center(
+          child: Text("Quiz App",
+              style: TextStyle(
+                fontSize: 20,
+                color: _backGroundColor,
+              )),
+        ),
+        backgroundColor: _hoverChange,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Welcome to the Quiz App!",
-              style: TextStyle(
-                fontSize: 20,
-                color: _hoverChange,
-              ),
-            ),
             SizedBox(height: 60),
             Text(
-              "High Score: $highScore" + (highScore != 0 ? "!" : ""),
+              "High Score: $highScore " + (highScore != 0 ? "!" : ""),
               style: TextStyle(
                 fontSize: 20,
                 color: _hoverChange,
@@ -92,11 +93,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: 60),
             TextButton(
-              child: Text("Start Quiz",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  )),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("Start Quiz",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    )),
+              ),
               style: TextButton.styleFrom(
                 backgroundColor: _hoverChange,
               ),
@@ -105,11 +109,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   setState(() {
                     _hoverChange = Colors.green;
                     _backGroundColor = Colors.black;
+                    getHighscore();
                   });
                 } else {
                   setState(() {
                     _hoverChange = Colors.teal;
                     _backGroundColor = Colors.grey.shade900;
+                    getHighscore();
                   });
                 }
               },
